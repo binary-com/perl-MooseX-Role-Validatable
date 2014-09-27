@@ -11,7 +11,13 @@ use Types::Standard qw( Str Int Bool ArrayRef );
 use Carp qw(confess);
 use Scalar::Util qw/blessed/;
 
-has [qw(_init_errors _validation_errors)] => (
+has '_init_errors' => (
+    is       => 'ro',
+    isa      => ArrayRef,
+    init_arg => undef,
+    default  => sub { return [] },
+);
+has '_validation_errors' => (
     is       => 'ro',
     isa      => ArrayRef,
     init_arg => undef,
