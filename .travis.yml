@@ -7,6 +7,7 @@ perl:
     - "5.10"
 before_install:
     - "cpanm Moo"
+    - "cpanm Type::Tiny"
     - "cpanm Test::More"
     - "cpanm Devel::Cover::Report::Coveralls"
 script:

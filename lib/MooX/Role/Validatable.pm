@@ -4,6 +4,11 @@ use strict;
 use 5.008_005;
 our $VERSION = '0.01';
 
+use Moo::Role;
+
+
+no Moo::Role;
+
 1;
 __END__
 
@@ -11,7 +16,7 @@ __END__
 
 =head1 NAME
 
-MooX::Role::Validatable - Blah blah blah
+MooX::Role::Validatable - Role to add validation to a class
 
 =head1 SYNOPSIS
 
@@ -23,11 +28,11 @@ MooX::Role::Validatable is
 
 =head1 AUTHOR
 
-Fayland Lam E<lt>fayland@gmail.comE<gt>
+Binary.com E<lt>fayland@binary.comE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2014- Fayland Lam
+Copyright 2014- Binary.com
 
 =head1 LICENSE
 
