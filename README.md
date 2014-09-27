@@ -3,23 +3,108 @@
 
 # NAME
 
-MooX::Role::Validatable - Blah blah blah
+MooX::Role::Validatable - Role to add validation to a class
 
 # SYNOPSIS
 
-    use MooX::Role::Validatable;
+    package MyClass;
+
+    use Moo;
+    with 'MooX::Role::Validatable';
+
+    has 'attr1' => (is => 'lazy');
+
+    sub _build_attr1 {
+        my $self = shift;
+
+        # Note initialization errors
+        $self->add_errors( {
+            message => 'Error: blabla',
+            message_to_client => 'Something is wrong!'
+        } ) if 'blabla';
+    }
+
+    sub _validate_some_other_errors { # _validate_*
+        my $self = shift;
+
+        my @errors;
+        push @errors, {
+            message => '...',
+            message_to_client => '...',
+        };
+
+        return @errors;
+    }
+
+    ## use
+    my $ex = MyClass->new();
+
+    if (not $ex->initialized_correctly) {
+        my @errors = $ex->all_init_errors();
+        ...;    # We didn't even start with good data.
+    }
+
+    if (not $ex->confirm_validity) { # does not pass those _validate_*
+        my @errors = $ex->all_errors();
+        ...;
+    }
 
 # DESCRIPTION
 
-MooX::Role::Validatable is
+MooX::Role::Validatable is a Moo/Moose role which provides a standard way to add validation to a class.
+
+# METHODS
+
+## initialized\_correctly
+
+no error when init the object (no add\_errors is called)
+
+## add\_errors
+
+    $self->add_errors(...)
+
+add errors on those lazy attributes or sub BUILD
+
+## confirm\_validity
+
+run all those __\_validate\_\*__ messages and returns true if no error found.
+
+## all\_errors
+
+An array of the errors currently noted. combined with M<all\_init\_errors> and M<all\_validation\_errors>
+
+## all\_init\_errors
+
+all errors on init
+
+## all\_validation\_errors
+
+all errors on validation
+
+## all\_errors\_by\_severity
+
+order by severity
+
+## primary\_validation\_error
+
+the first error of M<all\_errors\_by\_severity>
+
+## validation\_methods
+
+A list of all validation methods available on this object.
+This can be auto-generated from all methods which begin with
+"\_validate\_" which is especially helpful in devleoping new validations.
+
+You may wish to set this list directly on the object, if
+you create and validate a lot of static objects.
 
 # AUTHOR
 
-Fayland Lam <fayland@gmail.com>
+Binary.com <fayland@binary.com>
 
 # COPYRIGHT
 
-Copyright 2014- Fayland Lam
+Copyright 2014- Binary.com
 
 # LICENSE
 

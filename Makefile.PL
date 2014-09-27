@@ -10,8 +10,8 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Blah blah blah",
-  "AUTHOR" => "Fayland Lam <fayland\@gmail.com>",
+  "ABSTRACT" => "Role to add validation to a class",
+  "AUTHOR" => "Binary.com <fayland\@binary.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
@@ -20,7 +20,11 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "perl",
   "NAME" => "MooX::Role::Validatable",
-  "PREREQ_PM" => {},
+  "PREREQ_PM" => {
+    "Moo" => 0,
+    "Scalar::Util" => 0,
+    "Type::Tiny" => 0
+  },
   "TEST_REQUIRES" => {
     "Test::More" => "0.96"
   },
@@ -32,7 +36,10 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Test::More" => "0.96"
+  "Moo" => 0,
+  "Scalar::Util" => 0,
+  "Test::More" => "0.96",
+  "Type::Tiny" => 0
 );
 
 
