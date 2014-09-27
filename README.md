@@ -73,6 +73,8 @@ run all those __\_validate\_\*__ messages and returns true if no error found.
 
 An array of the errors currently noted. combined with M<all\_init\_errors> and M<all\_validation\_errors>
 
+all errors including below methods are instance of error\_class, default to [MooX::Role::Validatable::Error](https://metacpan.org/pod/MooX::Role::Validatable::Error)
+
 ## all\_init\_errors
 
 all errors on init
@@ -97,6 +99,15 @@ This can be auto-generated from all methods which begin with
 
 You may wish to set this list directly on the object, if
 you create and validate a lot of static objects.
+
+## error\_class
+
+default to [MooX::Role::Validatable::Error](https://metacpan.org/pod/MooX::Role::Validatable::Error), override by
+
+    has '+error_class' => (is => 'ro', default => sub { 'My::Validatable::Error' });
+
+    # or
+    ->new(error_class => 'My::Validatable::Error');
 
 # AUTHOR
 

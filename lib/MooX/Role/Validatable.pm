@@ -183,6 +183,8 @@ run all those B<_validate_*> messages and returns true if no error found.
 
 An array of the errors currently noted. combined with M<all_init_errors> and M<all_validation_errors>
 
+all errors including below methods are instance of error_class, default to L<MooX::Role::Validatable::Error>
+
 =head2 all_init_errors
 
 all errors on init
@@ -207,6 +209,15 @@ This can be auto-generated from all methods which begin with
 
 You may wish to set this list directly on the object, if
 you create and validate a lot of static objects.
+
+=head2 error_class
+
+default to L<MooX::Role::Validatable::Error>, override by
+
+    has '+error_class' => (is => 'ro', default => sub { 'My::Validatable::Error' });
+
+    # or
+    ->new(error_class => 'My::Validatable::Error');
 
 =head1 AUTHOR
 
