@@ -2,6 +2,9 @@ Revision history for MooX-Role-Validatable
 
 {{$NEXT}}
 
+0.03  2014-09-27 15:09:07 CST
+        - scalar on @ instead of direct context issue
+
 0.02  2014-09-27 14:24:17 CST
         - changes for old version of Moo and Moose
 
