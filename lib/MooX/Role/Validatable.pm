@@ -18,16 +18,16 @@ has [qw(_init_errors _validation_errors)] => (
     default  => sub { return [] },
 );
 
-has validation_methods => (
-    is   => 'lazy',
-    isa  => ArrayRef[Str]
-);
-
 has 'error_class' => (is => 'ro', default => sub { 'MooX::Role::Validatable::Error' }, trigger => sub {
     my $self = shift; my $error_class = $self->error_class;
     eval "require $error_class;";
     confess $@ if $@;
 } );
+
+has validation_methods => (
+    is   => 'lazy',
+    isa  => ArrayRef[Str]
+);
 
 sub _build_validation_methods {
     my $self = shift;
@@ -99,8 +99,8 @@ sub _errfilter {
     $error = { message => $error } unless ref($error); # when it's a string
 
     confess "Cannot add validation error which is not blessed nor hashref" unless ref($error) eq 'HASH';
-    $error->{message_to_client} = $error->{message} unless $error->{message_to_client};
-    $error->{set_by} = caller(1) unless $error->{set_by};
+    $error->{message_to_client} = $error->{message} unless exists $error->{message_to_client};
+    $error->{set_by} = caller(1) unless exists $error->{set_by};
     return $self->error_class->new($error);
 }
 
