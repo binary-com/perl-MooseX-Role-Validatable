@@ -51,6 +51,7 @@ ok(grep { $_ eq '_validate_other' } @$validation_methods);
 
 ok($ex->initialized_correctly());
 ok(! $ex->confirm_validity);
+ok(! $ex->passes_validation);
 my @errors = $ex->all_errors();
 is(scalar(@errors), 2);
 ok(grep { $_->message eq 'm...' } @errors);

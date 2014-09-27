@@ -55,7 +55,8 @@ sub all_validation_errors {
 
 sub passes_validation {
     my $self = shift;
-    return (scalar $self->all_errors) ? 0 : 1;
+    my @all_errors = $self->all_errors;
+    return (scalar @all_errors) ? 0 : 1;
 }
 
 sub should_alert {
