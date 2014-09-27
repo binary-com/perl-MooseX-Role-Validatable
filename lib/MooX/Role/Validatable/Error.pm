@@ -21,19 +21,19 @@ has set_by => (
 has severity => (
     is      => 'ro',
     isa     => Int,
-    default => 1,
+    default => sub { 1 },
 );
 
 has transient => (
     is      => 'ro',
     isa     => Bool,
-    default => 0,
+    default => sub { 0 },
 );
 
 has alert => (
     is      => 'ro',
     isa     => Bool,
-    default => 0,
+    default => sub { 0 },
 );
 
 has info_link => (is => 'ro');
