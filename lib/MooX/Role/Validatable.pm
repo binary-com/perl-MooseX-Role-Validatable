@@ -181,7 +181,7 @@ run all those B<_validate_*> messages and returns true if no error found.
 
 =head2 all_errors
 
-An array of the errors currently noted. combined with M<all_init_errors> and M<all_validation_errors>
+An array of the errors currently noted. combined with B<all_init_errors> and B<all_validation_errors>
 
 all errors including below methods are instance of error_class, default to L<MooX::Role::Validatable::Error>
 
@@ -199,7 +199,7 @@ order by severity
 
 =head2 primary_validation_error
 
-the first error of M<all_errors_by_severity>
+the first error of B<all_errors_by_severity>
 
 =head2 validation_methods
 

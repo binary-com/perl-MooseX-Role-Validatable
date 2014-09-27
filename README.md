@@ -71,7 +71,7 @@ run all those __\_validate\_\*__ messages and returns true if no error found.
 
 ## all\_errors
 
-An array of the errors currently noted. combined with M<all\_init\_errors> and M<all\_validation\_errors>
+An array of the errors currently noted. combined with __all\_init\_errors__ and __all\_validation\_errors__
 
 all errors including below methods are instance of error\_class, default to [MooX::Role::Validatable::Error](https://metacpan.org/pod/MooX::Role::Validatable::Error)
 
@@ -89,7 +89,7 @@ order by severity
 
 ## primary\_validation\_error
 
-the first error of M<all\_errors\_by\_severity>
+the first error of __all\_errors\_by\_severity__
 
 ## validation\_methods
 
