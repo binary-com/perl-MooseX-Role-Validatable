@@ -9,7 +9,7 @@ use MooX::Role::Validatable::Error;
 use Types::Standard qw( Str Int Bool ArrayRef );
 
 use Carp qw(confess);
-use List::MoreUtils qw(any);
+use Scalar::Util qw/blessed/;
 
 has [qw(_init_errors _validation_errors)] => (
     is       => 'ro',
@@ -23,12 +23,86 @@ has validation_methods => (
     isa  => ArrayRef[Str]
 );
 
+has 'error_class' => (is => 'ro', default => sub { 'MooX::Role::Validatable::Error' }, trigger => sub {
+    my $self = shift; my $error_class = $self->error_class;
+    eval "require $error_class;";
+    confess $@ if $@;
+} );
+
 sub _build_validation_methods {
     my $self = shift;
     return [grep { $_ =~ /^_validate_/ } ($self->meta->get_all_method_names)];
 }
 
+sub all_errors {
+    my $self = shift;
+    return (@{$self->{_init_errors}}, @{$self->{_validation_errors}});
+}
 
+sub all_init_errors {
+    return @{(shift)->{_init_errors}};
+}
+
+sub all_validation_errors {
+    return @{(shift)->{_validation_errors}};
+}
+
+sub passes_validation {
+    my $self = shift;
+    return (scalar $self->all_errors) ? 0 : 1;
+}
+
+sub should_alert {
+    my $self = shift;
+    return (grep { $_->alert } ($self->all_errors)) ? 1 : 0;
+}
+
+sub confirm_validity {
+    my $self = shift;
+    $self->{_validation_errors} = [
+        map { $self->_errfilter($_) }
+        map { $self->$_ } @{$self->validation_methods}
+    ];
+    return $self->passes_validation;
+}
+
+sub add_errors {
+    my ($self, @errors) = @_;
+    push @{ $self->{_init_errors} }, map { $self->_errfilter($_) } @errors;
+    return scalar @errors;
+}
+
+sub initialized_correctly {
+    my $self = shift;
+    return (@{$self->{_init_errors}}) ? 0 : 1;
+}
+
+sub all_errors_by_severity {
+    my $self = shift;
+    return (sort { $b->severity <=> $a->severity } ($self->all_errors));
+}
+
+sub primary_validation_error {
+    my $self = shift;
+
+    my @errors = $self->all_errors_by_severity;
+    return unless @errors;
+
+    # We may wish to do something with perm v. transient here at some point.
+    return $errors[0];
+}
+
+sub _errfilter {
+    my ($self, $error) = @_;
+    return $error if blessed($error);
+
+    $error = { message => $error } unless ref($error); # when it's a string
+
+    confess "Cannot add validation error which is not blessed nor hashref" unless ref($error) eq 'HASH';
+    $error->{message_to_client} = $error->{message} unless $error->{message_to_client};
+    $error->{set_by} = caller(1) unless $error->{set_by};
+    return $self->error_class->new($error);
+}
 
 no Moo::Role;
 
@@ -76,10 +150,12 @@ MooX::Role::Validatable - Role to add validation to a class
     my $ex = MyClass->new();
 
     if (not $ex->initialized_correctly) {
+        my @errors = $ex->all_init_errors();
         ...;    # We didn't even start with good data.
     }
 
     if (not $ex->confirm_validity) { # does not pass those _validate_*
+        my @errors = $ex->all_errors();
         ...;
     }
 
@@ -89,9 +165,39 @@ MooX::Role::Validatable is a Moo/Moose role which provides a standard way to add
 
 =head1 METHODS
 
+=head2 initialized_correctly
+
+no error when init the object (no add_errors is called)
+
+=head2 add_errors
+
+    $self->add_errors(...)
+
+add errors on those lazy attributes or sub BUILD
+
+=head2 confirm_validity
+
+run all those B<_validate_*> messages and returns true if no error found.
+
 =head2 all_errors
 
-An array of the errors currently noted.
+An array of the errors currently noted. combined with M<all_init_errors> and M<all_validation_errors>
+
+=head2 all_init_errors
+
+all errors on init
+
+=head2 all_validation_errors
+
+all errors on validation
+
+=head2 all_errors_by_severity
+
+order by severity
+
+=head2 primary_validation_error
+
+the first error of M<all_errors_by_severity>
 
 =head2 validation_methods
 

@@ -1,5 +1,6 @@
 requires 'perl', '5.008005';
 
+requires 'Scalar::Util'
 requires 'Moo';
 requires 'Type::Tiny';
 

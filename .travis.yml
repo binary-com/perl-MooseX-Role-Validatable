@@ -6,6 +6,7 @@ perl:
     - "5.12"
     - "5.10"
 before_install:
+    - "cpanm Scalar::Util"
     - "cpanm Moo"
     - "cpanm Type::Tiny"
     - "cpanm Test::More"

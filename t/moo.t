@@ -7,6 +7,7 @@ use Test::More;
     use Moo;
     with 'MooX::Role::Validatable';
 
+    has 'ok' => (is => 'ro');
     has 'attr1' => (is => 'lazy');
 
     sub _build_attr1 {
@@ -16,7 +17,7 @@ use Test::More;
         $self->add_errors( {
             message => 'Error: blabla',
             message_to_client => 'Something is wrong!'
-        } ) if 'blabla';
+        } ) unless $self->ok;
     }
 
     sub _validate_some_other_errors { # _validate_*
@@ -24,14 +25,14 @@ use Test::More;
 
         my @errors;
         push @errors, {
-            message => '...',
-            message_to_client => '...',
+            message => 'm...',
+            message_to_client => 'c...',
         };
         return @errors;
     }
 
     sub _validate_other {
-        return;
+        return ('str');
     }
 
     no Moo;
@@ -42,6 +43,22 @@ my $ex = MyClass->new;
 my $validation_methods = $ex->validation_methods;
 ok(grep { $_ eq '_validate_some_other_errors' } @$validation_methods);
 ok(grep { $_ eq '_validate_other' } @$validation_methods);
+
+ok($ex->initialized_correctly());
+ok(! $ex->confirm_validity);
+my @errors = $ex->all_errors();
+is(scalar(@errors), 2);
+ok(grep { $_->message eq 'm...' } @errors);
+ok(grep { $_->message eq 'str' } @errors);
+ok(grep { $_->message_to_client eq 'c...' } @errors);
+ok(grep { $_->message_to_client eq 'str' } @errors);
+
+$ex = MyClass->new(ok => 0); $ex->attr1; # call lazy
+ok(! $ex->initialized_correctly());
+@errors = $ex->all_init_errors();
+is(scalar(@errors), 1);
+ok($errors[0]->message, 'Error: blabla');
+ok($errors[0]->message_to_client, 'Something is wrong!');
 
 done_testing;
 
