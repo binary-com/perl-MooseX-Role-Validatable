@@ -1,6 +1,7 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+        - POD fix
 
 0.05  2014-10-08 17:28:27 CST
         - mv main module to MooseX-Role-Validatable

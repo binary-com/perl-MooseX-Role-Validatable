@@ -12,7 +12,7 @@ MooseX::Role::Validatable - Role to add validation to a class
     use Moose;
     with 'MooseX::Role::Validatable';
 
-    has 'attr1' => (is => 'lazy');
+    has 'attr1' => (is => 'ro', lazy_build => 1);
 
     sub _build_attr1 {
         my $self = shift;
