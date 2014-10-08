@@ -1,6 +1,8 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+
+0.05  2014-10-08 17:28:27 CST
         - mv main module to MooseX-Role-Validatable
 
 0.04  2014-10-08 13:02:00 CST
