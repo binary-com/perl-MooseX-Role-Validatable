@@ -120,7 +120,7 @@ __END__
 
 =head1 NAME
 
-MooX::Role::Validatable - Role to add validation to a class
+MooX::Role::Validatable - Role to add validation to a class (Deprecated)
 
 =head1 SYNOPSIS
 
@@ -167,6 +167,8 @@ MooX::Role::Validatable - Role to add validation to a class
     }
 
 =head1 DESCRIPTION
+
+B<deprecated>. use L<MooseX::Role::Validatable>
 
 MooX::Role::Validatable is a Moo/Moose role which provides a standard way to add validation to a class.
 

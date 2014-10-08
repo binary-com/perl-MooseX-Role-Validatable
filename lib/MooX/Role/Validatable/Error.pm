@@ -60,7 +60,7 @@ __END__
 
 =head1 NAME
 
-MooX::Role::Validatable::Error - Base Error class for MooX::Role::Validatable
+MooX::Role::Validatable::Error - Base Error class for MooX::Role::Validatable (Deprecated)
 
 =head1 SYNOPSIS
 
@@ -77,6 +77,8 @@ MooX::Role::Validatable::Error - Base Error class for MooX::Role::Validatable
     });
 
 =head1 DESCRIPTION
+
+B<deprecated>. use L<MooseX::Role::Validatable::Error>
 
 Represents an error in validation
 
