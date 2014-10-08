@@ -1,6 +1,8 @@
 Revision history for MooX-Role-Validatable
 
 {{$NEXT}}
+        - when we call meta->get_all_method_names, we still need Moose as requirement
+            (so that actually should be just MooseX-Role-)
 
 0.03  2014-09-27 15:09:07 CST
         - scalar on @ instead of direct context issue

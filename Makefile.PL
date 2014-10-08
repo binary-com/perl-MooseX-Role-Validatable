@@ -22,6 +22,7 @@ my %WriteMakefileArgs = (
   "NAME" => "MooX::Role::Validatable",
   "PREREQ_PM" => {
     "Moo" => 0,
+    "Moose" => 0,
     "Scalar::Util" => 0,
     "Type::Tiny" => 0
   },
@@ -37,6 +38,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Moo" => 0,
+  "Moose" => 0,
   "Scalar::Util" => 0,
   "Test::More" => "0.96",
   "Type::Tiny" => 0

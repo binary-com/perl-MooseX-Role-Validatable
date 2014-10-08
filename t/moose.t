@@ -1,16 +1,11 @@
 use strict;
 use Test::More;
 
-BEGIN {
-    eval 'require Moose';
-    plan skip_all => 'Moose is required to test.' if $@;
-}
-
 {
     package MyClass;
 
     use Moose;
-    with 'MooX::Role::Validatable';
+    with 'MooseX::Role::Validatable';
 
     has 'ok' => (is => 'ro');
     has 'attr1' => (is => 'rw', lazy_build => 1);
@@ -41,6 +36,7 @@ BEGIN {
     }
 
     no Moose;
+    __PACKAGE__->meta->make_immutable;
 }
 
 ## test MyClass
