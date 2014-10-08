@@ -1,5 +1,5 @@
 {
-   "abstract" : "Role to add validation to a class",
+   "abstract" : "Role to add validation to a class (Deprecated)",
    "author" : [
       "Binary.com <fayland@binary.com>"
    ],
@@ -61,7 +61,7 @@
          "web" : "https://github.com/binary-com/perl-MooX-Role-Validatable"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_contributors" : [
       "Jean-Yves Sireau <jy@binary.com>"
    ]

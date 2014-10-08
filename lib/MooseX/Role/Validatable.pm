@@ -2,7 +2,7 @@ package MooseX::Role::Validatable;
 
 use strict;
 use 5.008_005;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Moose::Role;
 use MooseX::Role::Validatable::Error;

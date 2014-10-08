@@ -3,7 +3,7 @@
 
 # NAME
 
-MooX::Role::Validatable - Role to add validation to a class
+MooX::Role::Validatable - Role to add validation to a class (Deprecated)
 
 # SYNOPSIS
 
@@ -50,6 +50,8 @@ MooX::Role::Validatable - Role to add validation to a class
     }
 
 # DESCRIPTION
+
+__deprecated__. use [MooseX::Role::Validatable](https://metacpan.org/pod/MooseX::Role::Validatable)
 
 MooX::Role::Validatable is a Moo/Moose role which provides a standard way to add validation to a class.
 
