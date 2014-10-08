@@ -1,5 +1,5 @@
 {
-   "abstract" : "Role to add validation to a class (Deprecated)",
+   "abstract" : "Role to add validation to a class",
    "author" : [
       "Binary.com <fayland@binary.com>"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "MooX-Role-Validatable",
+   "name" : "MooseX-Role-Validatable",
    "no_index" : {
       "directory" : [
          "t",

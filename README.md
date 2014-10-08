@@ -3,14 +3,14 @@
 
 # NAME
 
-MooX::Role::Validatable - Role to add validation to a class (Deprecated)
+MooseX::Role::Validatable - Role to add validation to a class
 
 # SYNOPSIS
 
     package MyClass;
 
-    use Moo;
-    with 'MooX::Role::Validatable';
+    use Moose;
+    with 'MooseX::Role::Validatable';
 
     has 'attr1' => (is => 'lazy');
 
@@ -51,9 +51,7 @@ MooX::Role::Validatable - Role to add validation to a class (Deprecated)
 
 # DESCRIPTION
 
-__deprecated__. use [MooseX::Role::Validatable](https://metacpan.org/pod/MooseX::Role::Validatable)
-
-MooX::Role::Validatable is a Moo/Moose role which provides a standard way to add validation to a class.
+MooseX::Role::Validatable is a Moo/Moose role which provides a standard way to add validation to a class.
 
 # METHODS
 
@@ -75,7 +73,7 @@ run all those __\_validate\_\*__ messages and returns true if no error found.
 
 An array of the errors currently noted. combined with __all\_init\_errors__ and __all\_validation\_errors__
 
-all errors including below methods are instance of error\_class, default to [MooX::Role::Validatable::Error](https://metacpan.org/pod/MooX::Role::Validatable::Error)
+all errors including below methods are instance of error\_class, default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX::Role::Validatable::Error)
 
 ## all\_init\_errors
 
@@ -104,7 +102,7 @@ you create and validate a lot of static objects.
 
 ## error\_class
 
-default to [MooX::Role::Validatable::Error](https://metacpan.org/pod/MooX::Role::Validatable::Error), override by
+default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX::Role::Validatable::Error), override by
 
     has '+error_class' => (is => 'ro', default => sub { 'My::Validatable::Error' });
 

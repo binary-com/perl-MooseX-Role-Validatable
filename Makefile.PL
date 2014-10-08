@@ -10,16 +10,16 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Role to add validation to a class (Deprecated)",
+  "ABSTRACT" => "Role to add validation to a class",
   "AUTHOR" => "Binary.com <fayland\@binary.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
-  "DISTNAME" => "MooX-Role-Validatable",
+  "DISTNAME" => "MooseX-Role-Validatable",
   "EXE_FILES" => [],
   "LICENSE" => "perl",
-  "NAME" => "MooX::Role::Validatable",
+  "NAME" => "MooseX::Role::Validatable",
   "PREREQ_PM" => {
     "Moo" => 0,
     "Moose" => 0,

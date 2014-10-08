@@ -1,6 +1,7 @@
-Revision history for MooX-Role-Validatable
+Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+        - mv main module to MooseX-Role-Validatable
 
 0.04  2014-10-08 13:02:00 CST
         - when we call meta->get_all_method_names, we still need Moose as requirement
