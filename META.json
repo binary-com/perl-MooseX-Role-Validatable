@@ -36,10 +36,8 @@
       },
       "runtime" : {
          "requires" : {
-            "Moo" : "0",
             "Moose" : "0",
             "Scalar::Util" : "0",
-            "Type::Tiny" : "0",
             "perl" : "5.008005"
          }
       },
@@ -61,7 +59,7 @@
          "web" : "https://github.com/binary-com/perl-MooX-Role-Validatable"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_contributors" : [
       "Jean-Yves Sireau <jy@binary.com>"
    ]

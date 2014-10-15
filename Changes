@@ -1,6 +1,8 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+
+0.09  2014-10-15 12:55:43 CST
         - remove no use requirements
 
 0.08  2014-10-15 11:56:55 CST
