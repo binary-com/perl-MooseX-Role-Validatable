@@ -1,6 +1,7 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+        - remove no use requirements
 
 0.08  2014-10-15 11:56:55 CST
         - remove t/moo.t

@@ -1,7 +1,6 @@
 package MooseX::Role::Validatable::Error;
 
 use Moose;
-use Types::Standard qw( Str Int Bool );
 
 has message => (
     is       => 'ro',
@@ -20,19 +19,19 @@ has set_by => (
 
 has severity => (
     is      => 'ro',
-    isa     => Int,
+    isa     => 'Int',
     default => sub { 1 },
 );
 
 has transient => (
     is      => 'ro',
-    isa     => Bool,
+    isa     => 'Bool',
     default => sub { 0 },
 );
 
 has alert => (
     is      => 'ro',
-    isa     => Bool,
+    isa     => 'Bool',
     default => sub { 0 },
 );
 
