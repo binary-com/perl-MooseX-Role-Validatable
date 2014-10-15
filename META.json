@@ -61,7 +61,7 @@
          "web" : "https://github.com/binary-com/perl-MooX-Role-Validatable"
       }
    },
-   "version" : "0.05",
+   "version" : "0.06",
    "x_contributors" : [
       "Jean-Yves Sireau <jy@binary.com>"
    ]
