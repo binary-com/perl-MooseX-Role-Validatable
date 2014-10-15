@@ -1,6 +1,8 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+
+0.08  2014-10-15 11:56:55 CST
         - remove t/moo.t
 
 0.07  2014-10-15 11:46:52 CST
