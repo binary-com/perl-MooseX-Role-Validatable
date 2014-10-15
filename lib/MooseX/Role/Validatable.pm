@@ -1,13 +1,12 @@
 package MooseX::Role::Validatable;
 
-use strict;
-use 5.008_005;
-our $VERSION = '0.05';
-
 use Moose::Role;
 use MooseX::Role::Validatable::Error;
 use Types::Standard qw( Str Int Bool ArrayRef );
 
+our $VERSION = '0.05';
+
+use Class::Load qw/load_class/;
 use Carp qw(confess);
 use Scalar::Util qw/blessed/;
 
@@ -24,15 +23,17 @@ has '_validation_errors' => (
     default  => sub { return [] },
 );
 
-has 'error_class' => (is => 'ro', default => sub { 'MooseX::Role::Validatable::Error' }, trigger => sub {
-    my $self = shift; my $error_class = $self->error_class;
-    eval "require $error_class;";
-    confess $@ if $@;
-} );
+has 'error_class' => (
+    is      => 'ro',
+    default => sub { 'MooseX::Role::Validatable::Error' },
+    trigger => sub {
+        my $self = shift;
+        load_class($self->error_class);
+    });
 
 has validation_methods => (
-    is   => 'ro',
-    isa  => ArrayRef[Str],
+    is         => 'ro',
+    isa        => ArrayRef [Str],
     lazy_build => 1,
 );
 
@@ -55,7 +56,7 @@ sub all_validation_errors {
 }
 
 sub passes_validation {
-    my $self = shift;
+    my $self       = shift;
     my @all_errors = $self->all_errors;
     return (scalar @all_errors) ? 0 : 1;
 }
@@ -69,14 +70,13 @@ sub confirm_validity {
     my $self = shift;
     $self->{_validation_errors} = [
         map { $self->_errfilter($_) }
-        map { $self->$_ } @{$self->validation_methods}
-    ];
+        map { $self->$_ } @{$self->validation_methods}];
     return $self->passes_validation;
 }
 
 sub add_errors {
     my ($self, @errors) = @_;
-    push @{ $self->{_init_errors} }, map { $self->_errfilter($_) } @errors;
+    push @{$self->{_init_errors}}, map { $self->_errfilter($_) } @errors;
     return scalar @errors;
 }
 
@@ -104,11 +104,11 @@ sub _errfilter {
     my ($self, $error) = @_;
     return $error if blessed($error);
 
-    $error = { message => $error } unless ref($error); # when it's a string
+    $error = {message => $error} unless ref($error);    # when it's a string
 
     confess "Cannot add validation error which is not blessed nor hashref" unless ref($error) eq 'HASH';
     $error->{message_to_client} = $error->{message} unless exists $error->{message_to_client};
-    $error->{set_by} = caller(1) unless exists $error->{set_by};
+    $error->{set_by}            = caller(1)         unless exists $error->{set_by};
     return $self->error_class->new($error);
 }
 
