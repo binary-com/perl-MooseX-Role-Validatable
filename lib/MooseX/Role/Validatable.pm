@@ -4,7 +4,7 @@ use Moose::Role;
 use MooseX::Role::Validatable::Error;
 use Types::Standard qw( Str Int Bool ArrayRef );
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 use Class::Load qw/load_class/;
 use Carp qw(confess);
