@@ -1,6 +1,7 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+        - remove t/moo.t
 
 0.07  2014-10-15 11:46:52 CST
         - remove MooX-*
