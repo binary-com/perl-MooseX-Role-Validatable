@@ -13,10 +13,10 @@ before_install:
     - source ~/travis-perl-helpers/init
     - build-perl
     - perl -V
-    - "cpanm Scalar::Util"
-    - "cpanm Moo"
-    - "cpanm Type::Tiny"
-    - "cpanm Test::More"
-    - "cpanm Devel::Cover::Report::Coveralls"
+    - "cpanm -n Scalar::Util"
+    - "cpanm -n Moo"
+    - "cpanm -n Type::Tiny"
+    - "cpanm -n Test::More"
+    - "cpanm -n Devel::Cover::Report::Coveralls"
 script:
   perl Makefile.PL && make test && cover -test -report coveralls
