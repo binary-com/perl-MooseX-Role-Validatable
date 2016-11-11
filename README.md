@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/binary-com/perl-MooX-Role-Validatable.svg?branch=master)](https://travis-ci.org/binary-com/perl-MooX-Role-Validatable)
-[![Coverage Status](https://coveralls.io/repos/binary-com/perl-MooX-Role-Validatable/badge.png?branch=master)](https://coveralls.io/r/binary-com/perl-MooX-Role-Validatable?branch=master)
+[![codecov](https://codecov.io/gh/binary-com/perl-MooX-Role-Validatable/branch/master/graph/badge.svg)](https://codecov.io/gh/binary-com/perl-MooX-Role-Validatable)
+
 
 # NAME
 
