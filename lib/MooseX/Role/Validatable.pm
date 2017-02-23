@@ -226,6 +226,10 @@ default to L<MooseX::Role::Validatable::Error>, override by
     # or
     ->new(error_class => 'My::Validatable::Error');
 
+=head2 passes_validation
+
+=head2 should_alert
+
 =head1 AUTHOR
 
 Binary.com E<lt>fayland@binary.comE<gt>

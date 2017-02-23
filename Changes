@@ -1,6 +1,7 @@
 Revision history for MooseX-Role-Validatable
 
 {{$NEXT}}
+        - switch to dzil
 
 0.09  2014-10-15 12:55:43 CST
         - remove no use requirements
