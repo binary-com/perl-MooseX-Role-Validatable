@@ -2,6 +2,8 @@ package MooseX::Role::Validatable::Error;
 
 use Moose;
 
+## VERSION
+
 has message => (
     is       => 'ro',
     required => 1,
@@ -114,6 +116,8 @@ A URI for further explanation of the error.
 =head2 info_text
 
 Description of the info_link
+
+=head2 as_html
 
 =head1 AUTHOR
 
