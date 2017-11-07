@@ -13,6 +13,7 @@ my $error = MooseX::Role::Validatable::Error->new({
     transient         => 1,                                    # Boolean, defaults to false
     alert             => 1,                                    # Boolean, defaults to false
     info_link         => 'https://example.com/',               # Client-facing URI for additional info on this error.
+    details           => {some_detail => 'some value'},        # Additional details
 });
 
 is($error->message, 'Internal debug message.');
