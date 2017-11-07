@@ -39,6 +39,7 @@ has alert => (
 
 has info_link => (is => 'ro');
 has info_text => (is => 'ro');
+has details   => (is => 'ro');
 
 sub as_html {
     my $self = shift;
