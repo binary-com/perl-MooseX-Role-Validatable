@@ -14,6 +14,12 @@ has message_to_client => (
     required => 1,
 );
 
+has details => (
+    is       => 'ro',
+    isa      => 'HashRef',
+    required => 0,
+);
+
 has set_by => (
     is       => 'ro',
     required => 1,
@@ -72,6 +78,7 @@ MooseX::Role::Validatable::Error - Base Error class for MooseX::Role::Validatabl
     my $error = MooseX::Role::Validatable::Error->new({
         message           => 'Internal debug message.',            # Required
         message_to_client => 'Client-facing message',              # Required
+        details           => { fields => [ 'date_start' ] },       # Optional, Must be a HashRef
         set_by            => 'Source of the error',                # Required; MAY default to caller(1)
         severity          => 5,                                    # For ordering, bigger is worse. Defaults to 1.
         transient         => 1,                                    # Boolean, defaults to false
@@ -88,6 +95,10 @@ Represents an error in validation
 =head2 message
 
 A message which might help us figure out what is wrong.
+
+=head2 details
+
+An arbitrary optional HashRef to pass the error details.
 
 =head2 message_to_client
 
