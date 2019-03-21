@@ -78,7 +78,7 @@ MooseX::Role::Validatable::Error - Base Error class for MooseX::Role::Validatabl
     my $error = MooseX::Role::Validatable::Error->new({
         message           => 'Internal debug message.',            # Required
         message_to_client => 'Client-facing message',              # Required
-        details           => { fields => [ 'date_start' ] },       # Optional, Must be a HashRef
+        details           => { field => 'duration' },            # Optional, Must be a HashRef
         set_by            => 'Source of the error',                # Required; MAY default to caller(1)
         severity          => 5,                                    # For ordering, bigger is worse. Defaults to 1.
         transient         => 1,                                    # Boolean, defaults to false
