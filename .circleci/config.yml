@@ -1,3 +1,4 @@
+version: 2.1
 jobs:
   test:
     parameters:
@@ -87,4 +88,3 @@ workflows:
          branches:
            only: 
            - master
-version: 2.1
