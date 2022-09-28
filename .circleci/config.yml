@@ -1,3 +1,4 @@
+version: 2.1
 jobs:
   test:
     parameters:
@@ -45,7 +46,9 @@ jobs:
       - run:
           name: Install dist deps
           command: |
-            dzil listdeps --author --missing --cpanm-versions | xargs cpanm -n
+            # see https://github.com/team-at-cpan/Dist-Zilla-Plugin-PodInherit/issues/1 please
+            #dzil listdeps --author --missing --cpanm-versions | xargs cpanm -n
+            cpanm --installdeps .
       - run:
           name: setup PAUSE account
           command: |
@@ -87,4 +90,3 @@ workflows:
          branches:
            only: 
            - master
-version: 2.1
