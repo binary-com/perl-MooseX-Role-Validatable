@@ -138,6 +138,10 @@ Description of the info_link
 
 =head2 as_html
 
+=head2 code
+
+Error code in string.
+
 =head1 AUTHOR
 
 Binary.com E<lt>fayland@binary.comE<gt>
