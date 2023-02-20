@@ -46,6 +46,14 @@ has alert => (
 has info_link => (is => 'ro');
 has info_text => (is => 'ro');
 
+has code => (
+    is      => 'ro',
+    isa     => 'Str',
+    default => sub {
+        return 'General';
+    },
+);
+
 sub as_html {
     my $self = shift;
 
