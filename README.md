@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/binary-com/perl-MooX-Role-Validatable.svg?branch=master)](https://travis-ci.org/binary-com/perl-MooX-Role-Validatable)
-[![codecov](https://codecov.io/gh/binary-com/perl-MooX-Role-Validatable/branch/master/graph/badge.svg)](https://codecov.io/gh/binary-com/perl-MooX-Role-Validatable)
-
-
 # NAME
 
 MooseX::Role::Validatable - Role to add validation to a class
@@ -68,13 +64,13 @@ add errors on those lazy attributes or sub BUILD
 
 ## confirm\_validity
 
-run all those __\_validate\_\*__ messages and returns true if no error found.
+run all those **\_validate\_\*** messages and returns true if no error found.
 
 ## all\_errors
 
-An array of the errors currently noted. combined with __all\_init\_errors__ and __all\_validation\_errors__
+An array of the errors currently noted. combined with **all\_init\_errors** and **all\_validation\_errors**
 
-all errors including below methods are instance of error\_class, default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX::Role::Validatable::Error)
+all errors including below methods are instance of error\_class, default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX%3A%3ARole%3A%3AValidatable%3A%3AError)
 
 ## all\_init\_errors
 
@@ -90,7 +86,7 @@ order by severity
 
 ## primary\_validation\_error
 
-the first error of __all\_errors\_by\_severity__
+the first error of **all\_errors\_by\_severity**
 
 ## validation\_methods
 
@@ -103,12 +99,16 @@ you create and validate a lot of static objects.
 
 ## error\_class
 
-default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX::Role::Validatable::Error), override by
+default to [MooseX::Role::Validatable::Error](https://metacpan.org/pod/MooseX%3A%3ARole%3A%3AValidatable%3A%3AError), override by
 
     has '+error_class' => (is => 'ro', default => sub { 'My::Validatable::Error' });
 
     # or
     ->new(error_class => 'My::Validatable::Error');
+
+## passes\_validation
+
+## should\_alert
 
 # AUTHOR
 

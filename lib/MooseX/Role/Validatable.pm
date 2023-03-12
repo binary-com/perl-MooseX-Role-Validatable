@@ -3,7 +3,7 @@ package MooseX::Role::Validatable;
 use Moose::Role;
 use MooseX::Role::Validatable::Error;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 use Class::Load  qw/load_class/;
 use Carp         qw(confess);
